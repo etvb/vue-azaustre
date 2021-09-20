@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <button @click="changeVisibility">Show/Hiden</button>
+        <div v-if="show" >
+            <ul>    
+                <li v-for="(show, index) in tvshows" :key="index"> 
+                    Name: <strong>{{show.name}}</strong>,
+                    Season: {{show.seasons}}
+                </li>
+            </ul>
+        </div>
+        <div v-else>
+            <p>Sin datos</p>
+        </div>
+
+
+    </div>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js" integrity="sha512-pSyYzOKCLD2xoGM1GwkeHbdXgMRVsSqQaaUoHskx/HF09POwvow2VfVEdARIYwdeFLbu+2FCOTRYuiyeGxXkEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                show: true,
+                tvshows: [
+                    {name: 'Gane of Thrones', seasons: 7},
+                    {name: 'Breaking Bad', seasons: 5},
+                    {name: 'Lost', seasons: 6},
+                    {name: 'Battlestar Galactica', seasons: 4}
+                ]
+            },
+            methods: {
+                changeVisibility: function () {
+                    this.show = !this.show;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
